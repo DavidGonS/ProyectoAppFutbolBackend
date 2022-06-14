@@ -5,9 +5,7 @@ import appfut.model.Liga;
 import appfut.model.client.LigaApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
@@ -23,7 +21,10 @@ public class LigaController implements LigaApi {
     }
 
     @Override
-    public void updateLiga(int id, Liga liga) {
-
+    @RequestMapping(method = RequestMethod.PUT, path = "/ligas/{idLiga}")
+    public void updateLiga(@PathVariable("idLiga") int id, @RequestBody Liga liga) {
+        if (!ligaDAO.ligaModify(liga)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No existe la liga");
+        }
     }
 }

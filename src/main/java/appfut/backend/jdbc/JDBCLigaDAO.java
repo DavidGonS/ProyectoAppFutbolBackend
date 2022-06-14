@@ -11,6 +11,7 @@ import java.util.Map;
 public class JDBCLigaDAO implements LigaDAO {
 
     private static final String INSERT_LIGA = "INSERT INTO Ligas(nombre, pais) VALUES( :nombre, :pais)";
+    private static final String UPDATE_LIGA="UPDATE Ligas SET nombre = :nombre, :pais WHERE idLiga = :idLiga";
 
     private NamedParameterJdbcTemplate jdbcTemplate;
 
@@ -28,5 +29,15 @@ public class JDBCLigaDAO implements LigaDAO {
         } catch (DuplicateKeyException e) {
             return false;
         }
+    }
+
+    @Override
+    public boolean ligaModify(Liga liga) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("nombre", liga.getNombre());
+        params.put("pais", liga.getPais());
+        params.put("idLiga", liga.getId());
+
+        return jdbcTemplate.update(UPDATE_LIGA, params) == 1;
     }
 }

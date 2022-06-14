@@ -20,6 +20,6 @@ public class LIgaCliente implements LigaApi{
 
     @Override
     public void updateLiga(int id, Liga liga) {
-
+        restTemplate.put(host + "/ligas/" + id, liga, Void.class);
     }
 }

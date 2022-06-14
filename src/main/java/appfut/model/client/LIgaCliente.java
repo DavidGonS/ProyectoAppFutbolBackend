@@ -17,4 +17,9 @@ public class LIgaCliente implements LigaApi{
     public void postLiga(Liga liga) {
         restTemplate.postForObject(host + "/ligas", liga, Void.class);
     }
+
+    @Override
+    public void updateLiga(int id, Liga liga) {
+
+    }
 }

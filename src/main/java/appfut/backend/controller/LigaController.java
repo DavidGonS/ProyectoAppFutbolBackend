@@ -21,4 +21,9 @@ public class LigaController implements LigaApi {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Duplicado");
         }
     }
+
+    @Override
+    public void updateLiga(int id, Liga liga) {
+
+    }
 }

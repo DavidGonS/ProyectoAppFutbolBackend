@@ -7,4 +7,6 @@ public interface LigaApi {
     void postLiga(Liga liga);
 
     void updateLiga(int id, Liga liga);
+
+    void deleteLiga(int idLiga);
 }

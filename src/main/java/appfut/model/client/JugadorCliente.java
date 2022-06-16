@@ -35,4 +35,10 @@ public class JugadorCliente implements JugadorApi{
         Jugador[] jugadors = restTemplate.getForObject(host + "/jugadores", Jugador[].class);
         return List.of(jugadors);
     }
+
+    @Override
+    public List<Jugador> getJugadoresEquipo(int idEquipo) {
+        Jugador[] jugadors = restTemplate.getForObject(host + "/jugadores/" + idEquipo, Jugador[].class);
+        return List.of(jugadors);
+    }
 }

@@ -16,6 +16,9 @@ public class Liga {
         this.pais = pais;
     }
 
+    public Liga() {
+    }
+
     public int getId() {
         return id;
     }

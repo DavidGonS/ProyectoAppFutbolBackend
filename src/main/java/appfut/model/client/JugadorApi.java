@@ -10,4 +10,6 @@ public interface JugadorApi {
     void deleteJugador(int idJugador);
 
     List<Jugador> getJugadores();
+    List<Jugador> getJugadoresEquipo(int idEquipo);
+    
 }

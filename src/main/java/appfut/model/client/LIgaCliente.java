@@ -22,4 +22,9 @@ public class LIgaCliente implements LigaApi{
     public void updateLiga(int id, Liga liga) {
         restTemplate.put(host + "/ligas/" + id, liga, Void.class);
     }
+
+    @Override
+    public void deleteLiga(int idLiga) {
+        restTemplate.delete(host + "/ligas/" + idLiga, Void.class);
+    }
 }

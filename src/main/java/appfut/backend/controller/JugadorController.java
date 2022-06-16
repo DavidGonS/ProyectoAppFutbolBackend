@@ -47,6 +47,7 @@ public class JugadorController implements JugadorApi {
         return jugadorDAO.getAll();
     }
 
+    @Override
     @RequestMapping(method = RequestMethod.GET, path = "/equipos/{idEquipo}/jugadores")
     public List<Jugador> getJugadoresEquipo(@PathVariable("idEquipo") int idEquipo) {
         return jugadorDAO.getByEquipo(idEquipo);

@@ -4,6 +4,8 @@ import appfut.model.Jugador;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 public class JugadorCliente implements JugadorApi{
     private RestTemplate restTemplate;
     private String host;
@@ -26,5 +28,11 @@ public class JugadorCliente implements JugadorApi{
     @Override
     public void deleteJugador(int idJugador) {
         restTemplate.delete(host + "/jugadores/" + idJugador, Void.class);
+    }
+
+    @Override
+    public List<Jugador> getJugadores() {
+        Jugador[] jugadors = restTemplate.getForObject(host + "/jugadores", Jugador[].class);
+        return List.of(jugadors);
     }
 }

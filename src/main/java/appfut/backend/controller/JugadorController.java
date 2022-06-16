@@ -13,7 +13,7 @@ public class JugadorController implements JugadorApi {
     private JugadorDAO jugadorDAO;
 
     @Override
-    @RequestMapping(method = RequestMethod.POST, path = "/equipos/{idEquipo}/jugadores")
+    @RequestMapping(method = RequestMethod.POST, path = "/equipos/{idEquipo}/jugadore")
     public void insertJugador(@RequestBody Jugador jugador, @PathVariable("idEquipo") int idEquipo) {
         if (!jugadorDAO.insert(jugador, idEquipo)) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Duplicado");

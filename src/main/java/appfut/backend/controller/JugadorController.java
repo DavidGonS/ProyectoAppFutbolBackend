@@ -27,4 +27,12 @@ public class JugadorController implements JugadorApi {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No existe");
         }
     }
+
+    @Override
+    @RequestMapping(method = RequestMethod.DELETE, path = "/jugadores/{idJugador}")
+    public void deleteJugador(@PathVariable("idJugador") int idJugador) {
+        if (jugadorDAO.remove(idJugador) == 0) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "no encontrado");
+        }
+    }
 }

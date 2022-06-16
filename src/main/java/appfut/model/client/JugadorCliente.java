@@ -22,4 +22,9 @@ public class JugadorCliente implements JugadorApi{
     public void updateJugador(int idJugador, Jugador jugador) {
         restTemplate.put(host + "/jugadores/" + idJugador, jugador, Void.class);
     }
+
+    @Override
+    public void deleteJugador(int idJugador) {
+        restTemplate.delete(host + "/jugadores/" + idJugador, Void.class);
+    }
 }

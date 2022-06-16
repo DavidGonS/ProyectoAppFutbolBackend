@@ -5,6 +5,7 @@ import appfut.model.Jugador;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,11 @@ public class JDBJugadorDAO implements JugadorDAO {
     private static final String UPDATE_JUGADOR="UPDATE Jugadores SET nombre = :nombre, apellido = :apellido, " +
                                                 "fechaNacimiento = :fechaNacimiento, dorsal = :dorsal, " +
                                                 "nacionalidad = :nacionalidad, posicion = :posicion, " +
-                                                "valorMercado = :valorMercado, idEquipo = :idEquipo";
+                                                "valorMercado = :valorMercado, idEquipo = :idEquipo " +
+                                                "WHERE idJugador = :idJugador";
+
+    private static final String DELETE_JUGADOR="DELETE FROM Jugadores WHERE idJugador = :idJugador";
+
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     public JDBJugadorDAO(NamedParameterJdbcTemplate jdbcTemplate) {
@@ -53,5 +58,12 @@ public class JDBJugadorDAO implements JugadorDAO {
         params.put("valorMercado", jugador.getValorMercado());
         params.put("idEquipo", jugador.getIdEquipo());
         return jdbcTemplate.update(UPDATE_JUGADOR, params) == 1;
+    }
+
+    @Override
+    public int remove(int idJugador) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("idJugador", idJugador);
+        return jdbcTemplate.update(DELETE_JUGADOR, params);
     }
 }

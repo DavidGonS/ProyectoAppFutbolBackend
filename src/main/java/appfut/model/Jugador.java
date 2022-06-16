@@ -3,6 +3,7 @@ package appfut.model;
 import java.util.Objects;
 
 public class Jugador {
+    private int id;
     private int idEquipo;
     private String nombre;
     private String apellido;
@@ -12,7 +13,8 @@ public class Jugador {
     private String posicion;
     private int valorMercado;
 
-    public Jugador(int idEquipo, String nombre, String apellido, String fechaNacimiento, int dorsal, String nacionalidad, String posicion, int valorMercado) {
+    public Jugador(int id, int idEquipo, String nombre, String apellido, String fechaNacimiento, int dorsal, String nacionalidad, String posicion, int valorMercado) {
+        this.id = id;
         this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -21,6 +23,14 @@ public class Jugador {
         this.nacionalidad = nacionalidad;
         this.posicion = posicion;
         this.valorMercado = valorMercado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getIdEquipo() {
@@ -92,18 +102,19 @@ public class Jugador {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Jugador jugador = (Jugador) o;
-        return idEquipo == jugador.idEquipo && dorsal == jugador.dorsal && valorMercado == jugador.valorMercado && Objects.equals(nombre, jugador.nombre) && Objects.equals(apellido, jugador.apellido) && Objects.equals(fechaNacimiento, jugador.fechaNacimiento) && Objects.equals(nacionalidad, jugador.nacionalidad) && Objects.equals(posicion, jugador.posicion);
+        return id == jugador.id && idEquipo == jugador.idEquipo && dorsal == jugador.dorsal && valorMercado == jugador.valorMercado && Objects.equals(nombre, jugador.nombre) && Objects.equals(apellido, jugador.apellido) && Objects.equals(fechaNacimiento, jugador.fechaNacimiento) && Objects.equals(nacionalidad, jugador.nacionalidad) && Objects.equals(posicion, jugador.posicion);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idEquipo, nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado);
+        return Objects.hash(id, idEquipo, nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado);
     }
 
     @Override
     public String toString() {
         return "Jugador{" +
-                "idEquipo=" + idEquipo +
+                "id=" + id +
+                ", idEquipo=" + idEquipo +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", fechaNacimiento='" + fechaNacimiento + '\'' +

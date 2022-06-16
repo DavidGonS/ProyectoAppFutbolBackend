@@ -13,6 +13,10 @@ public class JDBJugadorDAO implements JugadorDAO {
     private static final String INSERT_JUGADOR_IN_TEAM = "INSERT INTO Jugadores(nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado, idEquipo) " +
                                                     "VALUES( :nombre, :apellido, :fechaNacimiento, :dorsal, :nacionalidad, :posicion, :valorMercado, :idEquipo)";
 
+    private static final String UPDATE_JUGADOR="UPDATE Jugadores SET nombre = :nombre, apellido = :apellido, " +
+                                                "fechaNacimiento = :fechaNacimiento, dorsal = :dorsal, " +
+                                                "nacionalidad = :nacionalidad, posicion = :posicion, " +
+                                                "valorMercado = :valorMercado, idEquipo = :idEquipo";
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     public JDBJugadorDAO(NamedParameterJdbcTemplate jdbcTemplate) {
@@ -35,5 +39,19 @@ public class JDBJugadorDAO implements JugadorDAO {
         } catch (DuplicateKeyException e) {
             return false;
         }
+    }
+
+    @Override
+    public boolean modify(Jugador jugador) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("nombre", jugador.getNombre());
+        params.put("apellido", jugador.getApellido());
+        params.put("fechaNacimiento", jugador.getFechaNacimiento());
+        params.put("dorsal", jugador.getDorsal());
+        params.put("nacionalidad", jugador.getNacionalidad());
+        params.put("posicion", jugador.getPosicion());
+        params.put("valorMercado", jugador.getValorMercado());
+        params.put("idEquipo", jugador.getIdEquipo());
+        return jdbcTemplate.update(UPDATE_JUGADOR, params) == 1;
     }
 }

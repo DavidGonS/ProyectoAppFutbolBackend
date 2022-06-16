@@ -15,11 +15,11 @@ public class JugadorCliente implements JugadorApi{
 
     @Override
     public void insertJugador(Jugador jugador, int idEquipo) {
-        restTemplate.postForObject(host + "/jugadores/{idJugador}", jugador, Void.class);
+        restTemplate.postForObject(host + "/jugadores/" + idEquipo, jugador, Void.class);
     }
 
     @Override
     public void updateJugador(int idJugador, Jugador jugador) {
-
+        restTemplate.put(host + "/jugadores/" + idJugador, jugador, Void.class);
     }
 }

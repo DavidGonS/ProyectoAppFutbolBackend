@@ -4,4 +4,5 @@ import appfut.model.Jugador;
 
 public interface JugadorDAO {
     boolean insert(Jugador jugador, int idEquipo);
+    boolean modify(Jugador jugador);
 }

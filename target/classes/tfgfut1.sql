@@ -52,11 +52,23 @@ CREATE TABLE IF NOT EXISTS Clasificaciones(
                 idEquipo INTEGER,  
                 FOREIGN KEY (idEquipo) REFERENCES Equipos(idEquipo));
 
-INSERT INTO Jugadores(nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado) 
-VALUES('Cristiano Ronaldo', 'Dos Santos', '01-01-1985', 7, 'Portugal', 'Delantero Centro', 100000000);
+INSERT INTO Ligas(nombre, pais)
+VALUES("Ligue 1 Uber Eats", "Francia");
 
-INSERT INTO Jugadores(nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado) 
-VALUES('Ronaldo', 'Nazario', '01-01-1985', 9, 'Brasil', 'Delantero Centro', 200000000);
+INSERT INTO Ligas(nombre, pais)
+VALUES("Bundesliga", "Alemania");
 
-INSERT INTO Jugadores(nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado) 
-VALUES('Luka', 'Modric', '01-01-1985', 10, 'Croacia', 'Mediocentro', 300000000);                                                
+INSERT INTO Equipos(nombre, estadio, puntuacion, idLiga)
+VALUES("Real Madrid", "Santiago Bernabeu", 60, 1);
+
+INSERT INTO Equipos(nombre, estadio, puntuacion, idLiga)
+VALUES("Atletico de Madrid", "Wanda Metropolitano", 50, 1);
+
+INSERT INTO Jugadores(nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado, idEquipo)
+VALUES('Cristiano Ronaldo', 'Dos Santos', '01-01-1985', 7, 'Portugal', 'Delantero Centro', 100000000, 1);
+
+INSERT INTO Jugadores(nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado, idEquipo)
+VALUES('Ronaldo', 'Nazario', '01-01-1985', 9, 'Brasil', 'Delantero Centro', 200000000, 1);
+
+INSERT INTO Jugadores(nombre, apellido, fechaNacimiento, dorsal, nacionalidad, posicion, valorMercado, idEquipo)
+VALUES('Luka', 'Modric', '01-01-1985', 10, 'Croacia', 'Mediocentro', 300000000, 1);
